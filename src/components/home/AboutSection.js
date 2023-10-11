@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AboutSection() {
+export default function AboutSection( props ) {
   const {
     about_section,
     about_section_left,
@@ -84,16 +84,12 @@ export default function AboutSection() {
           About
         </Typography>
         <Typography className={leaderBoard_left_h1} variant="h2" component="h1">
-          We are the best quality <br /> restaurant
+          Kami adalah restoran dengan kualitas terbaik
         </Typography>
         <Typography className={about_descriptions} component="p">
-          Restaurant in Nigeria sourcing our ingredient locally, to celebrate
-          lifes special moments by offering the best food, service and ambience
-          in every home
-        </Typography>
-        <Typography className={about_descriptions} component="p">
-          If you want any food please login or sign up on our mobile app or
-          website
+        Restoran di Indonesia yang menggunakan bahan-bahan kami secara lokal, 
+        untuk merayakan momen spesial dalam hidup dengan menawarkan makanan, 
+        layanan, dan suasana terbaik
         </Typography>
         <Button
           disableElevation
@@ -102,8 +98,7 @@ export default function AboutSection() {
           color="primary"
           autoCapitalize="none"
           endIcon={<ArrowRightAltIcon />}
-          component={Link}
-          to={'/allmeals'}
+          onClick={props.hendleRefMenu}
         >
           our menu
         </Button>

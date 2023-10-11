@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Typography, makeStyles, Button } from '@material-ui/core';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 import LocalMallIcon from '@material-ui/icons/LocalMall';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import LocalShippingIcon from '@material-ui/icons/LocalShipping';
+import { LibraryAddCheck, ListAlt } from '@material-ui/icons';
 
 const useStyles = makeStyles(() => ({
   header: {
@@ -89,7 +88,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function LeaderBoard() {
+export default function LeaderBoard( {hendleRefMenu} ) {
   const {
     leaderBoard,
     leaderBoard_left,
@@ -111,6 +110,14 @@ export default function LeaderBoard() {
     </div>
   );
 
+  // const menuRef = useRef(null);
+
+  // const handleNext = () => {
+  //   if (menuRef.current) {
+  //     menuRef.current.scrollIntoView({ behavior: 'smooth' });
+  //   }
+  // };
+
   return (
     <div>
       <div className={leaderBoard}>
@@ -120,11 +127,10 @@ export default function LeaderBoard() {
             variant="h2"
             component="h1"
           >
-            Order Your Favourite <br /> Food Easily
+            Pesan Makanan Favorit Anda <br /> dengan Mudah
           </Typography>
           <Typography className={leaderBoard_left_p} component="p">
-            We deliver 100% organic and fresh food. You can <br /> order right
-            now!
+            Kami memberikan pelayanan terbaik. <br /> Anda dapat memesan sekarang!
           </Typography>
           <Button
             disableElevation
@@ -133,26 +139,25 @@ export default function LeaderBoard() {
             color="primary"
             autoCapitalize="none"
             endIcon={<ArrowRightAltIcon />}
-            component={Link}
-            to={'/allmeals'}
+            onClick={hendleRefMenu}
           >
             our menu
           </Button>
           <div className={quickTip_container}>
             <QuickTip
               Icon={<LocalMallIcon />}
-              quicktip_details1="select your favourite food"
-              quicktip_details2="and order!"
+              quicktip_details1="Pilih makanan favorit anda"
+              quicktip_details2="lalu masukan keranjang!"
             />
             <QuickTip
-              Icon={<LocationOnIcon />}
-              quicktip_details1="select your receiving place"
-              quicktip_details2="place"
+              Icon={<ListAlt />}
+              quicktip_details1="Cek pesanan anda pada keranjang"
+              quicktip_details2="lalu isi form pesanan"
             />
             <QuickTip
-              Icon={<LocalShippingIcon />}
-              quicktip_details1="Get your food within"
-              quicktip_details2="01-02 hours"
+              Icon={<LibraryAddCheck />}
+              quicktip_details1="Checkout pesanan anda dan"
+              quicktip_details2="lakukan pembayaran dikasir"
             />
           </div>
         </div>

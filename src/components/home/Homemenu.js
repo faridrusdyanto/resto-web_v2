@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Typography, makeStyles, Button } from '@material-ui/core';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 import { Link } from 'react-router-dom';
@@ -64,6 +64,7 @@ export default function Homemenu() {
     button,
     homemenu_data,
   } = useStyles();
+
   return (
     <div className={homemenu}>
       <div className={homemenu_explore}>
@@ -71,7 +72,7 @@ export default function Homemenu() {
           Menu
         </Typography>
         <Typography className={leaderBoard_left_h1} variant="h2" component="h1">
-          Our Best Selling Meals
+          Makanan Terlaris Kami
         </Typography>
       </div>
 

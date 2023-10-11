@@ -111,7 +111,7 @@ export default function Homemenuitem({
           variant="contained"
           className={cart_button}
         >
-          New
+          Add
         </Button>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography, makeStyles } from '@material-ui/core';
-import LocalShippingIcon from '@material-ui/icons/LocalShipping';
+import RoomService from '@material-ui/icons/RoomService';
 import EcoIcon from '@material-ui/icons/Eco';
 import BusinessIcon from '@material-ui/icons/Business';
 
@@ -84,30 +84,30 @@ export default function WhyChooseUs() {
   return (
     <div className={why_choose_us}>
       <Typography className={leaderBoard_left_h1} variant="h2" component="h1">
-        Why choose us?
+        Mengapa memilih kami?
       </Typography>
       <Typography className={wcu_service} component="p">
-        over 2 million people are happy with our service
+        Lebih dari 1 juta orang senang dengan layanan kami
       </Typography>
 
       <div className={icon_boxes}>
         <Iconbox
           Icon={<EcoIcon className={icon_box_icon} />}
           title="Fresh food"
-          details1="We server the best and fresh"
-          details2="quality food"
+          details1="Kami menyajikan makanan berkualitas"
+          details2="terbaik dan segar"
         />
         <Iconbox
           Icon={<BusinessIcon className={icon_box_icon} />}
           title="Best offer"
-          details1="We give the best offer for our"
-          details2="valuable customers"
+          details1="Kami memberikan penawaran terbaik"
+          details2="untuk pelanggan berharga kami"
         />
         <Iconbox
-          Icon={<LocalShippingIcon className={icon_box_icon} />}
-          title="Fast delivery"
-          details1="We have delivery van for"
-          details2="fast delivery"
+          Icon={<RoomService className={icon_box_icon} />}
+          title="Service"
+          details1="Kami memberikan pelayanan terbaik"
+          details2="untuk pelanggan kami"
         />
       </div>
     </div>
