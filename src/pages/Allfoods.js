@@ -42,7 +42,6 @@ const useStyles = makeStyles((theme) => ({
   },
   homemenu_data: {
     display: "flex",
-    justifyContent: "center",
     marginBottom: "30px",
     flexWrap: "wrap",
     paddingTop: "30px",
@@ -66,6 +65,7 @@ export default function Allfoods() {
   const [menus, setmenus] = useState([]);
   const [tabs, settabs] = useState([]);
   const [tabSelect, setTabSelect] = useState(0);
+  const [width, setwidth] = useState(window.innerWidth);
 
   useEffect(() => {
     if (menudata) {
@@ -76,6 +76,17 @@ export default function Allfoods() {
       settabs(findCategory);
     }
   }, [menudata]);
+  useEffect(() => {
+    function handleResize() {
+      setwidth(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleChange = (event, newValue) => {
     const newMenu = [...menudata];
@@ -105,13 +116,13 @@ export default function Allfoods() {
           <Tab key={index} label={tab} value={index} />
         ))}
       </Tabs>
-      <SwipeableViews axis={"x"} index={tabSelect}>
+      <SwipeableViews axis={"x"} index={tabSelect || 0}>
         {tabSelect === 0 && (
           <Box p={3}>
             <Typography>
               <div className={homemenu_data}>
                 {menus.map((data, index) => (
-                  <Homemenuitem key={index} {...data} />
+                  <Homemenuitem key={index} {...data} pagesWidth={width} />
                 ))}
               </div>
             </Typography>
@@ -122,7 +133,7 @@ export default function Allfoods() {
             <Typography>
               <div className={homemenu_data}>
                 {menus.map((data, index) => (
-                  <Homemenuitem key={index} {...data} />
+                  <Homemenuitem key={index} {...data} pagesWidth={width} />
                 ))}
               </div>
             </Typography>
