@@ -92,10 +92,19 @@ export default function Homemenuitem({
     <div
       className={home_menu_item}
       style={{
-        minWidth:
-          pagesWidth <= 500 ? pagesWidth / 2 - 34 : (15 / 100) * pagesWidth,
+        width:
+          pagesWidth <= 500
+            ? pagesWidth / 2 - 34
+            : pagesWidth <= 800
+            ? (30 / 100) * pagesWidth
+            : pagesWidth <= 1000
+            ? (22 / 100) * pagesWidth
+            : (15 / 100) * pagesWidth,
       }}
     >
+      <div style={{
+        height:'75%'
+      }}>
       <div className={hmi_img_div}>
         <img className={hmi_img} src={image_path} />
       </div>
@@ -108,6 +117,7 @@ export default function Homemenuitem({
       <Typography className={hmi_food_colories} variant="h2" component="h1">
         {colories}
       </Typography>
+      </div>
       <div className={lower_div}>
         <Typography className={hmi_food_price} variant="h2" component="h1">
           {price}
