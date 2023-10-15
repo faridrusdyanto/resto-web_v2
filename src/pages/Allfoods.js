@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Typography, makeStyles, Button, Tabs, Tab } from '@material-ui/core';
+import { Typography, makeStyles, Button, Tabs, Tab, Box } from '@material-ui/core';
+import SwipeableViews from 'react-swipeable-views';
 import Homemenuitem from '../components/home/Homemenuitem';
 import menudata from '../utils/menudata';
 
@@ -61,14 +62,14 @@ export default function Allfoods() {
     homemenu_data,
   } = useStyles();
 
-  const [tabSelect, setTabSelect] = useState("0")
+  const [tabSelect, setTabSelect] = useState(0)
 
   const handleChange = (event, newValue) => {
     setTabSelect(newValue)
-    console.log(event, 'event+++');
-    console.log(newValue, 'newValue+++');
   }
-
+  console.log('====================================');
+  console.log(typeof tabSelect);
+  console.log('====================================');
   return (
     <div className={homemenu}>
       <div className={homemenu_explore}>
@@ -85,14 +86,57 @@ export default function Allfoods() {
         variant="fullWidth"
         aria-label="full width tabs example"
       >
-        <Tab label="Makanan" value={"0"} />
-        <Tab label="Minuman" value={"1"} />
+        <Tab label="Makanan" value={0} />
+        <Tab label="Minuman" value={1} />
       </Tabs>
+      <SwipeableViews
+        axis={'x'}
+        index={tabSelect}
+      // onChangeIndex={handleChangeIndex}
+      >
+        {tabSelect === 0 && (
+          <Box p={3}>
+            <Typography>
+              <div className={homemenu_data}>
+                {menudata.map((data, index) => (
+                  <Homemenuitem key={index} {...data} />
+                ))}
+              </div>
+            </Typography>
+          </Box>
+        )}
+        {tabSelect === 1 && (
+          <Box p={3}>
+            <Typography>
+              <div className={homemenu_data}>
+                {menudata.map((data, index) => (
+                  <Homemenuitem key={index} {...data} />
+                ))}
+              </div>
+            </Typography>
+          </Box>
+        )}
+      </SwipeableViews>
+      {/*
       <div className={homemenu_data}>
+        {tabSelect === 0 && (
+          menudata.map((data, index) => (
+            <Homemenuitem key={index} {...data} />
+          ))
+        )}
+      </div>
+      <div className={homemenu_data}>
+        {tabSelect === 1 && (
+          menudata.map((data, index) => (
+            <Homemenuitem key={index} {...data} />
+          ))
+        )}
+      </div> */}
+      {/* <div className={homemenu_data}>
         {menudata.map((data, index) => (
           <Homemenuitem key={index} {...data} />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }
