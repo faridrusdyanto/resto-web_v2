@@ -319,18 +319,18 @@ export default function Checkout() {
     customer_details = set_Customer_detail;
   }, []);
 
-  if (totalQuantities === 0) {
-    return <Navigate to="/allmeals" />;
-  }
+  // if (totalQuantities === 0) {
+  //   return <Navigate to="/allmeals" />;
+  // }
 
   return (
     <div className={checkout}>
-      {authenticated ? (
+      {/* {authenticated ? ( */}
         <div className={checkout_left}>
           <FormikStepper
             initialValues={{
-              firstName: user.firstName,
-              lastName: user.lastName,
+              firstName: user?.firstName,
+              lastName: user?.lastName,
               address: '',
               postalCode: '',
               city: '',
@@ -384,14 +384,14 @@ export default function Checkout() {
                 </Grid>
                 <Grid item xs={12} md={6}>
                   <Textfield
-                    disabled={!!user.firstName}
+                    disabled={!!user?.firstName}
                     name="firstName"
                     helpertext="First Name"
                   />
                 </Grid>
                 <Grid item xs={12} md={6}>
                   <Textfield
-                    disabled={!!user.lastName}
+                    disabled={!!user?.lastName}
                     name="lastName"
                     helpertext="Last Name"
                   />
@@ -439,19 +439,19 @@ export default function Checkout() {
                     borderRadius="10px"
                   >
                     <Typography className={adress_box_details}>
-                      {customer_detail.firstName} {customer_detail.lastName}
+                      {customer_detail?.firstName} {customer_detail?.lastName}
                     </Typography>
                     <Typography className={adress_box_details}>
-                      {customer_detail.address}
+                      {customer_detail?.address}
                     </Typography>
                     <Typography className={adress_box_details}>
-                      {customer_detail.city}
+                      {customer_detail?.city}
                     </Typography>
                     <Typography className={adress_box_details}>
-                      {customer_detail.state}
+                      {customer_detail?.state}
                     </Typography>
                     <Typography className={adress_box_details}>
-                      Tel: {customer_detail.phone}
+                      Tel: {customer_detail?.phone}
                     </Typography>
                     <Typography
                       onClick={() => goBack((s) => s - 1)}
@@ -495,11 +495,11 @@ export default function Checkout() {
             </FormikStep>
           </FormikStepper>
         </div>
-      ) : (
+      {/* ) : (
         <div className={checkout_left}>
           <NotFound path="/login" text="Login" animationData={use_avatar} />
         </div>
-      )}
+      )} */}
 
       <div className={checkout_right}>
         <div className={shopping_cart_heading}>

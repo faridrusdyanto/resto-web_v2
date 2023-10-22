@@ -52,15 +52,16 @@ const CartSection = () => {
   };
 
   const onClickCart = async () => {
-    if (totalQuantities > 0) {
-      navigate('/checkout');
-    } else {
-      await setAlertContent({
-        type: 'warning',
-        content: 'sorry there are no items in cart',
-      });
-      handleClick();
-    }
+    navigate('/checkout');
+    // if (totalQuantities > 0) {
+    //   navigate('/checkout');
+    // } else {
+    //   await setAlertContent({
+    //     type: 'warning',
+    //     content: 'sorry there are no items in cart',
+    //   });
+    //   handleClick();
+    // }
   };
 
   const handleClose = (event, reason) => {
